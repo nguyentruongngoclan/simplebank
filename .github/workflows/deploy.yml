@@ -46,7 +46,7 @@ jobs:
         docker push -a $REGISTRY/$REPOSITORY
     
     - name: Update kube config
-      run: aws eks update-kubeconfig --name simple-bank --region us-west-2
+      run: aws eks update-kubeconfig --name simple-bank --region us-west-2 --role-arn arn:aws:iam::959415291655:role/AWSEKSNodeRole
     
     # - name: Deploy image to Amazon EKS
     #   run: |
