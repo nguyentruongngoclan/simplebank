@@ -5,7 +5,17 @@ metadata:
   namespace: kube-system
 data:
   mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::959415291655:role/AWSEKSNodeRole
+      username: system:node:{{EC2PrivateDNSName}}
     - rolearn: arn:aws:iam::959415291655:role/github-ci
+      username: github-ci
+      groups:
+        - system:masters
+  mapUsers: |
+    - rolearn: arn:aws:iam::959415291655:user/github-ci
       username: github-ci
       groups:
         - system:masters
